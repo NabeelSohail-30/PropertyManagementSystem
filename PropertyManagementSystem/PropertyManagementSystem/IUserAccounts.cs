@@ -14,6 +14,6 @@ namespace PropertyManagementSystem
 
         int AddUser(UserAccountsModel user);
 
-        void SignOut();
+        void SignOut(int UserId);
     }
 }
