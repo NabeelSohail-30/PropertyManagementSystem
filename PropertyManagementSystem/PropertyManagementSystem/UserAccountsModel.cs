@@ -17,7 +17,7 @@ namespace PropertyManagementSystem
         public char PasswordSalt { get; set; }
         public string Mobile { get; set; }
         public bool TwoFactorAuthentication { get; set; }
-        public bool WrongAttempts { get; set; }
+        public int WrongAttempts { get; set; }
         public DateTime LastLoginDateTime { get; set; }
         public DateTime LastLoggedOutDateTime { get; set; }
         public bool IsLogged { get; set; }
