@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbConnection.cs" />
+    <Compile Include="IUserAccounts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAccountsAuthenticateModel.cs" />
+    <Compile Include="UserAccountsModel.cs" />
+    <Compile Include="UserAccountsRepo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
