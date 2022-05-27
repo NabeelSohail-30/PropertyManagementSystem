@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PropertyManagementSystem;
 
 namespace PropertyManagementSystem
 {
-    class UserAccountsModel
+    class UserAccountsModel : UserAccountsAuthenticateModel
     {
-        public int UserAccountId { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -17,8 +17,6 @@ namespace PropertyManagementSystem
         public char PasswordSalt { get; set; }
         public string Mobile { get; set; }
         public bool TwoFactorAuthentication { get; set; }
-        public bool Active { get; set; }
-        public bool AccountLockedOut { get; set; }
         public bool WrongAttempts { get; set; }
         public DateTime LastLoginDateTime { get; set; }
         public DateTime LastLoggedOutDateTime { get; set; }
