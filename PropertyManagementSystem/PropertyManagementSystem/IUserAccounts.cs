@@ -10,7 +10,8 @@ namespace PropertyManagementSystem
     {
         UserAccountsAuthenticateModel AuthenticateLogin(string pUserName, string pPassword);  
 
-        UserAccountsModel GetUserById(int pUserAccountId);  //returns complete user detail against id
+        UserAccountsModel Find(int pUserAccountId);  //returns complete user detail against id
+        UserAccountsModel Find(string pUserName);  //returns complete user detail against username
 
         int AddUser(UserAccountsModel user);
 
