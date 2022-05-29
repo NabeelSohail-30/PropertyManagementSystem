@@ -11,5 +11,7 @@ namespace PropertyManagementSystem
         public int UserAccountId { get; set; }
         public bool Active { get; set; }
         public bool AccountLockedOut { get; set; }
+        public bool IsLogged { get; set; }
+        public bool AllowMultipleLogin { get; set; }
     }
 }
