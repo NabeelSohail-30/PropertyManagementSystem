@@ -20,8 +20,7 @@ namespace PropertyManagementSystem
         public int WrongAttempts { get; set; }
         public DateTime LastLoginDateTime { get; set; }
         public DateTime LastLoggedOutDateTime { get; set; }
-        public bool IsLogged { get; set; }
-        public bool AllowMultipleLogin { get; set; }
+        
     }
 }
 
