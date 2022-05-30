@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PropertyManagementSystem
 {
-    class UserAccountsAuthenticateModel
+    public class UserAccountsAuthenticateModel
     {
         public int UserAccountId { get; set; }
         public bool Active { get; set; }
