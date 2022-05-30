@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace PropertyManagementSystem
 {
-    class UserAccountsRepo : DbConnection, IUserAccounts
+    public class UserAccountsRepo : DbConnection, IUserAccounts
     {
         private SqlConnection conn;
         private SqlCommand cmd;
 
-        UserAccountsRepo()
+        public UserAccountsRepo()
         {
             conn = GetConnection();
             cmd = new SqlCommand();
@@ -67,11 +67,12 @@ namespace PropertyManagementSystem
                     cmd.CommandText = "spAuthenticateUserAccount";
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pUserName", pUserName);
-                    cmd.Parameters.AddWithValue("@pUserPassword", pPassword);
-
+                    cmd.Parameters.AddWithValue("@pPassword", pPassword);
+                    conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
 
                     UserAuthenticate = new UserAccountsAuthenticateModel();
+                    dr.Read();
                     UserAuthenticate.UserAccountId = (int)dr["UserAccountId"];
                     UserAuthenticate.Active = (bool)dr["Active"];
                     UserAuthenticate.AccountLockedOut = (bool)dr["AccountLockedOut"];
@@ -180,6 +181,6 @@ namespace PropertyManagementSystem
             }
         }
 
-        
+
     }
 }
