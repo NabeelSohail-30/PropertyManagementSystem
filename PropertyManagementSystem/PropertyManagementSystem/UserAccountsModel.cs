@@ -7,7 +7,7 @@ using PropertyManagementSystem;
 
 namespace PropertyManagementSystem
 {
-    class UserAccountsModel : UserAccountsAuthenticateModel
+    public class UserAccountsModel : UserAccountsAuthenticateModel
     {
         public string UserName { get; set; }
         public string FirstName { get; set; }
