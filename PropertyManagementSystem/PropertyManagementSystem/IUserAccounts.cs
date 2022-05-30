@@ -8,7 +8,7 @@ namespace PropertyManagementSystem
 {
     interface IUserAccounts
     {
-        UserAccountsAuthenticateModel AuthenticateLogin(string pUserName, string pPassword);  
+        UserAccountsAuthenticateModel AuthenticateLogin(string pUserName, string pPassword);
 
         UserAccountsModel Find(int pUserAccountId);  //returns complete user detail against id
         UserAccountsModel Find(string pUserName);  //returns complete user detail against username
