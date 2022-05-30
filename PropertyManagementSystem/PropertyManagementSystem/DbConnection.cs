@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PropertyManagementSystem
 {
-    abstract class DbConnection
+    public abstract class DbConnection
     {
         private readonly string connectionString;
 
