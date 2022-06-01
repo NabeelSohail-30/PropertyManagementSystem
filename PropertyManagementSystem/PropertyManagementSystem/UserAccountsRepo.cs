@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -55,9 +56,37 @@ namespace PropertyManagementSystem
             return UserAccountId;
         }
 
-        public UserAccountsAuthenticateModel AuthenticateLogin(string pUserName, string pPassword)
+        public UserAccountsModel AuthenticateLogin(string pUserName, string pPassword)
         {
-            UserAccountsAuthenticateModel UserAuthenticate = null;
+
+            UserAccountsModel valUser = null;
+            valUser = this.Find(pUserName);
+
+            //Validations
+            if (pUserName == null || string.IsNullOrEmpty(pUserName))
+            {
+                throw new NullReferenceException();
+            }
+            else if (pPassword == null || string.IsNullOrEmpty(pPassword))
+            {
+                throw new NullReferenceException();
+            }
+            else if (valUser == null)
+            {
+                throw new Exception("User Account does not Exists");
+            }
+            else if (valUser.Active == false)
+            {
+                throw new Exception("User Account is not Active");
+            }
+            else if (valUser.AccountLockedOut == true)
+            {
+                throw new Exception("User Account is Locked Out");
+            }
+
+
+            UserAccountsModel UserAuthenticate = null;
+            int Number;
 
             using (conn)
             {
@@ -68,22 +97,30 @@ namespace PropertyManagementSystem
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pUserName", pUserName);
                     cmd.Parameters.AddWithValue("@pPassword", pPassword);
+
+                    cmd.Parameters.Add("@pNumber", SqlDbType.Int);
+                    cmd.Parameters["@pNumber"].Direction = ParameterDirection.ReturnValue;
+
                     conn.Open();
-                    SqlDataReader dr = cmd.ExecuteReader();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
 
-                    UserAuthenticate = new UserAccountsAuthenticateModel();
-                    dr.Read();
-                    UserAuthenticate.UserAccountId = (int)dr["UserAccountId"];
-                    UserAuthenticate.Active = (bool)dr["Active"];
-                    UserAuthenticate.AccountLockedOut = (bool)dr["AccountLockedOut"];
-                    UserAuthenticate.IsLogged = (bool)dr["IsLogged"];
-                    UserAuthenticate.AllowMultipleLogin = (bool)dr["AllowMultipleLogin"];
+                    Number = int.Parse(cmd.Parameters["@pNumber"].Value.ToString());
+                    Messages.Number = Number;
+                    Messages.Message = Messages.Find(Number);
 
-                    dr.Close();
-                    dr = null;
+                    if (Number == 1)
+                    {
+                        UserAuthenticate = this.Find(pUserName);
+
+                    }
+                    else
+                    {
+                        throw new Exception($"{Messages.Message}");
+                    }
+
                 }
             }
-
             return UserAuthenticate;
         }
 
@@ -128,7 +165,7 @@ namespace PropertyManagementSystem
 
         public UserAccountsModel Find(string pUserName)
         {
-            UserAccountsModel user;
+            UserAccountsModel user = null;
             using (conn)
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -138,27 +175,38 @@ namespace PropertyManagementSystem
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@pUserName", pUserName);
 
+                    conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
 
-                    user = new UserAccountsModel();
 
-                    user.UserAccountId = (int)dr["UserAccountId"];
-                    user.UserName = (string)dr["UserName"];
-                    user.FirstName = (string)dr["FirstName"];
-                    user.LastName = (string)dr["LastName"];
-                    user.Email = (string)dr["Email"];
-                    user.Mobile = (string)dr["Mobile"];
-                    user.TwoFactorAuthentication = (bool)dr["TwoFactorAuthentication"];
-                    user.Active = (bool)dr["Active"];
-                    user.AccountLockedOut = (bool)dr["AccountLockedOut"];
-                    user.WrongAttempts = (int)dr["WrongAttempts"];
-                    user.LastLoginDateTime = (DateTime)dr["LastLoginDateTime"];
-                    user.LastLoggedOutDateTime = (DateTime)dr["LastLoggedOutDateTime"];
-                    user.IsLogged = (bool)dr["IsLogged"];
-                    user.AllowMultipleLogin = (bool)dr["AllowMultipleLogin"];
+                    if (dr.HasRows)
+                    {
+                        user = new UserAccountsModel();
+                        dr.Read();
+                        user.UserAccountId = (int)dr["UserAccountId"];
+                        user.UserName = (string)dr["UserName"];
+                        user.FirstName = (string)dr["FirstName"];
+                        user.LastName = (string)dr["LastName"];
+                        user.Email = (string)dr["Email"];
+                        user.Mobile = (string)dr["Mobile"];
+                        user.TwoFactorAuthentication = (bool)dr["TwoFactorAuthentication"];
+                        user.Active = (bool)dr["Active"];
+                        user.AccountLockedOut = (bool)dr["AccountLockedOut"];
+                        user.WrongAttempts = (int)dr["WrongAttempts"];
+
+                        if (!DBNull.Value.Equals(dr["LastLoginDateTime"]))
+                            user.LastLoginDateTime = (DateTime)dr["LastLoginDateTime"];
+
+                        if (!DBNull.Value.Equals(dr["LastLoggedOutDateTime"]))
+                            user.LastLoggedOutDateTime = (DateTime)dr["LastLoggedOutDateTime"];
+
+                        user.IsLogged = (bool)dr["IsLogged"];
+                        user.AllowMultipleLogin = (bool)dr["AllowMultipleLogin"];
+                    }
 
                     dr.Close();
                     dr = null;
+                    conn.Close();
                 }
             }
 
