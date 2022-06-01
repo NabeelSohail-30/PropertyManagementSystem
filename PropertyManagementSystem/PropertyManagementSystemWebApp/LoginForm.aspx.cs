@@ -18,43 +18,28 @@ namespace PropertyManagementSystemWebApp
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
             UserAccountsRepo user = new UserAccountsRepo();
-            UserAccountsAuthenticateModel userModel = new UserAccountsAuthenticateModel();
-            userModel = user.AuthenticateLogin(TxtUserName.Text, TxtPassword.Text);
+            UserAccountsModel userModel = new UserAccountsModel();
 
-            if(userModel.UserAccountId > 0)
+            try
+            {
+                userModel = user.AuthenticateLogin(TxtUserName.Text, TxtPassword.Text);
+            }
+            catch (NullReferenceException)
+            {
+                LblError.Text = "User Name or Password cannot be NULL";
+                LblError.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                LblError.Text = ex.Message;
+                LblError.Visible = true;
+            }
+
+            if(userModel.UserAccountId > 0 && userModel.IsLogged == true && userModel.AccountLockedOut == false && userModel.Active == true)
             {
                 Response.Redirect("https://www.Google.com");
             }
-
-            if(userModel.UserAccountId == 0 && userModel.IsLogged == true && userModel.AllowMultipleLogin == false)
-            {
-                LblError.Text = "User Authentication Failed, User is already logged in";
-                LblError.Visible = true;
-            }
-
-            if(userModel.UserAccountId == 0 && userModel.AccountLockedOut == true)
-            {
-                LblError.Text = "Your account is locked, Contact System Administration";
-                LblError.Visible = true;
-            }
-
-            if (userModel.UserAccountId == 0 && userModel.Active == false)
-            {
-                LblError.Text = "Your account is not active, Contact System Administration";
-                LblError.Visible = true;
-            }
-
-            if (userModel.UserAccountId == 0 && userModel.AccountLockedOut==false && userModel.Active == true)
-            {
-                LblError.Text = "Invalid Password, User Authentication Failed";
-                LblError.Visible = true;
-            }
-
-            if(userModel.UserAccountId == 0 && userModel.Active == false && userModel.AccountLockedOut == true)
-            {
-                LblError.Text = "User Authentication Failed, User not found";
-                LblError.Visible = true;
-            }
+            
         }
     }
 }
