@@ -7,8 +7,9 @@ using PropertyManagementSystem;
 
 namespace PropertyManagementSystem
 {
-    public class UserAccountsModel : UserAccountsAuthenticateModel
+    public class UserAccountsModel
     {
+        public int UserAccountId { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,7 +21,10 @@ namespace PropertyManagementSystem
         public int WrongAttempts { get; set; }
         public DateTime LastLoginDateTime { get; set; }
         public DateTime LastLoggedOutDateTime { get; set; }
-        
+        public bool Active { get; set; }
+        public bool AccountLockedOut { get; set; }
+        public bool IsLogged { get; set; }
+        public bool AllowMultipleLogin { get; set; }
     }
 }
 
