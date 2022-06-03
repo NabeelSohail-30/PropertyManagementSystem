@@ -17,7 +17,7 @@ namespace PropertyManagementSystemWebApp
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-            UserAccountsRepo user = new UserAccountsRepo();
+            IUserAccountsRepo user = new UserAccountsRepo();    //Polymorphism
             UserAccountsModel userModel = new UserAccountsModel();
 
             try
