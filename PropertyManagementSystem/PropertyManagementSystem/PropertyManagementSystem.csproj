@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbConnection.cs" />
-    <Compile Include="IUserAccounts.cs" />
+    <Compile Include="IUserAccountsRepo.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAccountsModel.cs" />
