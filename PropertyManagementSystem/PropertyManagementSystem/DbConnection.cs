@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace PropertyManagementSystem
 
         public DbConnection()
         {
-            connectionString = "Server=NABEELS-WORK;Database=PropertyManagementSystem;User Id=PMS;Password=Nabeel30;MultipleActiveResultSets=True;";
+            connectionString = ConfigurationManager.ConnectionStrings["SqlDbCS"].ToString();
 
         }
 

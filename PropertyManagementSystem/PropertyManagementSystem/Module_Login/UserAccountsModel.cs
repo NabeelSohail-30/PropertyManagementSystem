@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PropertyManagementSystem;
+using PropertyManagementSystem.Module_Login;
 
 namespace PropertyManagementSystem
 {
@@ -25,6 +26,7 @@ namespace PropertyManagementSystem
         public bool AccountLockedOut { get; set; }
         public bool IsLogged { get; set; }
         public bool AllowMultipleLogin { get; set; }
+        public List<UserRolesModel> UserRoles { get; set; }
     }
 }
 

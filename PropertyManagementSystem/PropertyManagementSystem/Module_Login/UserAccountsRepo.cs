@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PropertyManagementSystem.Module_Login;
+using PropertyManagementSystem;
 
 namespace PropertyManagementSystem
 {
@@ -144,9 +146,10 @@ namespace PropertyManagementSystem
 
                 DbConnectionOpen();
                 SqlDataReader dr = cmd.ExecuteReader();
-
+                
                 if (dr.HasRows)
                 {
+                    UserRolesRepo userRole = new UserRolesRepo();
                     user = new UserAccountsModel();
                     dr.Read();
                     user.UserAccountId = (int)dr["UserAccountId"];
@@ -163,6 +166,7 @@ namespace PropertyManagementSystem
                     user.LastLoggedOutDateTime = (DateTime)dr["LastLoggedOutDateTime"];
                     user.IsLogged = (bool)dr["IsLogged"];
                     user.AllowMultipleLogin = (bool)dr["AllowMultipleLogin"];
+                    user.UserRoles = userRole.Find(pUserAccountId);
                 }
 
                 dr.Close();
@@ -192,6 +196,7 @@ namespace PropertyManagementSystem
 
                 if (dr.HasRows)
                 {
+                    UserRolesRepo userRole = new UserRolesRepo();
                     user = new UserAccountsModel();
                     dr.Read();
                     user.UserAccountId = (int)dr["UserAccountId"];
@@ -213,6 +218,7 @@ namespace PropertyManagementSystem
 
                     user.IsLogged = (bool)dr["IsLogged"];
                     user.AllowMultipleLogin = (bool)dr["AllowMultipleLogin"];
+                    user.UserRoles = userRole.Find(user.UserAccountId);
                 }
 
                 dr.Close();
@@ -222,6 +228,42 @@ namespace PropertyManagementSystem
             //}
 
             return user;
+        }
+        public string GetDefaultPage(int pRoleId)
+        {
+            var defaultPage = string.Empty;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+                cmd.CommandText = "spGetDefaultPageByRoleId";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@pRoleId", pRoleId);
+
+                //get return value (message id) and find message
+
+                DbConnectionOpen();
+                defaultPage = cmd.ExecuteScalar().ToString();
+            }
+            return defaultPage;
+        }
+
+        public string GetDefaultPage(string pUserAccountId)
+        {
+            var defaultPage = string.Empty;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+                int UserId = int.Parse(pUserAccountId);
+                cmd.CommandText = "spGetDefaultPageByUserAccountId";
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@pUserAccountId", UserId);
+
+                //get return value (message id) and find message
+
+                DbConnectionOpen();
+                defaultPage = cmd.ExecuteScalar().ToString();
+            }
+            return defaultPage;
         }
 
         public void SignOut(int pUserAccountId)

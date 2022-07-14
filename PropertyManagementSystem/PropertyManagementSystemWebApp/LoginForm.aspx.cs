@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using PropertyManagementSystem;
+using PropertyManagementSystem.Module_Login;
+using System.Web.Security;
 
 namespace PropertyManagementSystemWebApp
 {
@@ -35,11 +37,28 @@ namespace PropertyManagementSystemWebApp
                 LblError.Visible = true;
             }
 
-            if(userModel.UserAccountId > 0 && userModel.IsLogged == true && userModel.AccountLockedOut == false && userModel.Active == true)
+            //Get Role Default Page using userModel
+            //if (userModel.UserAccountId > 0 && userModel.IsLogged == true && userModel.AccountLockedOut == false && userModel.Active == true)
+            //{
+            //    foreach (UserRolesModel role in userModel.UserRoles)
+            //    {
+            //        //Response.Write($"{role.RoleId} - {role.Role.RoleDescription} - {role.Role.DefaultPage} - {role.DefaultPageRole}<br>");
+            //        if (role.DefaultPageRole)
+            //        {
+            //            Response.Redirect(role.Role.DefaultPage);
+            //        }
+            //    }
+            //}
+
+            //Get Default Page using UserRolesRepo.GetDefaultPage() Method after authentication
+
+            if (userModel.UserAccountId > 0 && userModel.IsLogged == true && userModel.AccountLockedOut == false && userModel.Active == true)
             {
-                Response.Redirect("https://www.Google.com");
+                Session["sUserModel"] = userModel;
+                Session["sUserDefaulPage"] = user.GetDefaultPage(userModel.UserAccountId.ToString());
+                FormsAuthentication.RedirectFromLoginPage(userModel.UserName, false);
+                //Response.Redirect(user.GetDefaultPage(userModel.UserAccountId.ToString()));
             }
-            
         }
     }
 }

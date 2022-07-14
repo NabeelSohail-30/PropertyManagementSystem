@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace PropertyManagementSystem
 {
@@ -16,7 +17,7 @@ namespace PropertyManagementSystem
         public static string Find(int Number)
         {
             string msg;
-            using (SqlConnection conn = new SqlConnection("Server=NABEELS-WORK;Database=PropertyManagementSystem;User Id=PMS;Password=Nabeel30;MultipleActiveResultSets=True;"))
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SqlDbCS"].ToString()))
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {

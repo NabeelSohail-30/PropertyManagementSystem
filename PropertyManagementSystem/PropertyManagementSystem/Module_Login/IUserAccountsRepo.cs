@@ -14,6 +14,8 @@ namespace PropertyManagementSystem
         UserAccountsModel Find(string pUserName);  //returns complete user detail against username
 
         int AddUser(UserAccountsModel user);
+        string GetDefaultPage(int pRoleId);
+        string GetDefaultPage(string pUserAccountId);
 
         void SignOut(int UserId);
     }
