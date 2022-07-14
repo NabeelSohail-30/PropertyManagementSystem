@@ -1,0 +1,35 @@
+.login-wrapper {
+    width: 780px;
+    height: 430px;
+    background-color: var(--light_blue);
+    border: 3px solid var(--dark_blue);
+    color: var(--black);
+    padding: 0px;
+    margin: 120px auto;
+}
+
+/*----------Login-------------*/
+.login_box {
+    width: 380px;
+    height: 430px;
+    background-color: var(--light_blue);
+    color: var(--white);
+    margin: 0px;
+}
+
+.login_img {
+    width: 380px;
+    height: 430px;
+    background-color: var(--white);
+    color: var(--white);
+    margin: 0px;
+}
+
+.login_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.login_box .container .row {
+    margin-top: 20px;
+}
