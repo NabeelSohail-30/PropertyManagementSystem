@@ -1,0 +1,89 @@
+nav {
+    background-color: var(--white);
+    margin-bottom: 30px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: left;
+    padding: 0 10px;
+    margin-top: 14px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 40px;
+    margin: 0px 4px;
+}
+
+nav ul li a {
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px;
+}
+
+nav ul li a:hover {
+    color: var(--red);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    border: 2px solid var(--red);
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+nav ul li a:active {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+nav ul li a.active {
+    background-color: var(--red);
+    color: var(--white);
+    border-radius: 15px;
+}
+
+/*-------Banner-------*/
+.banner {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    background-image: url(Images/banner.jpg);
+    width: 100%;
+    height: 855px;
+}
+
+.banner_img_logo {
+    height: 350px;
+    width: 30%;
+    margin-top: 60px;
+}
+
+.company {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    margin-top: 100px;
+}
+
+.banner_heading {
+    font-size: 68px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    color: var(--red);
+}
+
+.banner_sub-head {
+    font-size: 28px;
+    text-align: center;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    color: var(--dark_blue);
+}
