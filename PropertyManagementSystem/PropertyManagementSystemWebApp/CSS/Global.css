@@ -1,4 +1,15 @@
-﻿* {
+﻿/*----------Colors-------------*/
+:root {
+    --white: #ffffff;
+    --red: #BB1B1C;
+    --light_red: #ee3636cf;
+    --light_blue: #24508b;
+    --dark_blue: #243364;
+    --black: black;
+}
+
+/*----------Main/Body-------------*/
+* {
     margin: 0px;
     padding: 0px;
     text-decoration: none;
@@ -7,92 +18,77 @@
 }
 
 body {
-    background-color: #dbe5f0;
+    background-color: var(--dark_blue);
 }
 
-.loginbox {
-    width: 380px;
+
+/*----------Wrapper-------------*/
+.wrapper {
+    width: 780px;
     height: 430px;
     top: 50%;
     left: 50%;
-    background-color: #e3e3e3;
-    border: 1px solid #06224f;
-    color: black;
-    margin: 24px auto;
+    background-color: var(--white);
+    border: 3px solid var(--dark_blue);
+    color: var(--black);
     position: absolute;
     transform: translate(-50%, -50%);
-    padding: 30px 70px;
+}
+
+
+/*----------Buttons-------------*/
+.btn_red {
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 30px;
+    /*border: 2px solid var(--white);*/
+    border-radius: 10px;
+}
+
+.btn_red:hover {
+    background-color: var(--white);
+    color: var(--red);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: 4px solid var(--red);
+    border-radius: 10px;
+}
+
+
+/*----------label/textbox-------------*/
+.lbl_foreWhite {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--white);
+}
+
+.txt_box_foreRed {
+    color: red;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+}
+
+.txt_box_foreRed:focus {
+    border: 3px solid var(--red);
 }
 
 .form-control:focus {
-    color: black;
-    background-color: #ffffff;
-    border-color: #06224f;
+    background-color: #fff;
+    border-color: var(--red);
     outline: 0;
-    box-shadow: 0 0 0 1px #06224f;
+    box-shadow: none;
 }
 
-.avatar {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    top: -10%;
-    left: calc(50% - 50px);
-}
-
-.header h1 {
-    margin: 0px;
-    padding: 0 0 20px;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 5px;
-}
-
-.loginbox-label {
-    margin: 0px;
-    padding: 0px;
-    font-weight: bold;
-}
-
-.button {
-    background-color: #06224f;
-    padding: 10px 22px;
-    font-size: 22px;
-    border: 0px;
-    outline: 0px;
-    border-radius: 20px;
-    color: #ffffff;
-    font-weight: bold;
-    border: 3px solid #ffffff;
-    width: 250px;
-}
-
-    .button:hover {
-        background-color: #ffffff;
-        padding: 10px 22px;
-        font-size: 20px;
-        border: 0px;
-        outline: 0px;
-        border-radius: 20px;
-        color: black;
-        font-weight: bold;
-        text-decoration: none;
-        border: 3px solid #06224f;
-    }
-
-.loginbox-textbox {
-    width: 100%;
-    margin-bottom: 20px;
-    height: 40px;
-    font-size: 16px;
-    color: black;
-    border-radius: 8px;
-}
-
-.label-error {
-    color: red;
-    margin-bottom: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
+.error_white {
+    color: var(--white);
+    text-decoration: underline;
+    font-size: 14px;
+    font-weight: bolder;
 }
