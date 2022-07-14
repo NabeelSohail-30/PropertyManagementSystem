@@ -1,0 +1,27 @@
+footer {
+    background-color: var(--white);
+    padding: 8px;
+    margin-bottom: 0px;
+}
+
+.media-icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.media-icons li {
+    display: inline-block;
+}
+
+.media-icons a {
+    display: block;
+    padding: 0 6px;
+}
+
+.copy {
+    color: var(--red);
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 20px;
+}
