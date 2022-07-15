@@ -3,46 +3,42 @@ nav {
     margin-bottom: 30px;
 }
 
-nav ul {
-    display: flex;
-    justify-content: left;
-    padding: 0 10px;
-    margin-top: 14px;
-}
+    nav ul {
+        display: flex;
+        justify-content: left;
+        padding: 0 10px;
+        margin-top: 14px;
+    }
 
-nav ul li {
-    display: inline-block;
-    line-height: 40px;
-    margin: 0px 4px;
-}
+        nav ul li {
+            display: inline-block;
+            line-height: 26px;
+            margin: 0px 4px;
+        }
 
-nav ul li a {
+.btn_nav {
     color: var(--black);
     font-size: 16px;
     font-weight: 500;
     padding: 12px;
+    background: none;
+    border: none;
 }
 
-nav ul li a:hover {
-    color: var(--red);
-    font-size: 16px;
-    font-weight: 500;
-    padding: 10px;
-    border: 2px solid var(--red);
-    border-radius: 15px;
-    text-decoration: none;
-}
+    .btn_nav:hover {
+        color: var(--red);
+        font-size: 16px;
+        font-weight: 500;
+        padding: 10px;
+        border: 2px solid var(--red);
+        border-radius: 15px;
+        text-decoration: none;
+    }
 
-nav ul li a:active {
-    background-color: var(--red);
-    color: var(--white);
-}
-
-nav ul li a.active {
-    background-color: var(--red);
-    color: var(--white);
-    border-radius: 15px;
-}
+    .btn_nav:active {
+        background-color: var(--red);
+        color: var(--white);
+    }
 
 /*-------Banner-------*/
 .banner {
