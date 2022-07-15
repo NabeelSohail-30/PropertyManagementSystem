@@ -1,12 +1,11 @@
-﻿using System;
+﻿using PropertyManagementSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using PropertyManagementSystem;
-using PropertyManagementSystem.Module_Login;
-using System.Web.Security;
 
 namespace PropertyManagementSystemWebApp
 {
@@ -58,6 +57,7 @@ namespace PropertyManagementSystemWebApp
                 Session["sUserDefaulPage"] = user.GetDefaultPage(userModel.UserAccountId.ToString());
                 FormsAuthentication.RedirectFromLoginPage(userModel.UserName, false);
                 //Response.Redirect(user.GetDefaultPage(userModel.UserAccountId.ToString()));
+                //Response.Redirect("MainMenu.aspx");
             }
         }
     }
