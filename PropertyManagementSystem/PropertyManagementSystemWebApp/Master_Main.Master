@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master_Main.master.cs" Inherits="PropertyManagementSystemWebApp.Master_Main" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="CSS/bootstrap.css" rel="stylesheet" />
+    <link href="CSS/global.css" rel="stylesheet" />
+    <link href="CSS/Header.css" rel="stylesheet" />
+    <link href="CSS/Footer.css" rel="stylesheet" />
+    <link href="CSS/MainMenu.css" rel="stylesheet" />
+    <link href="CSS/LoginForm.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <header>
+                <nav>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <ul>
+                                    <li>
+                                        <asp:Button ID="btnHome" runat="server" Text="Home" CssClass="btn_nav" OnClick="btnHome_Click"/>
+                                    </li>
+
+                                    <li>
+                                        <asp:Button ID="btnAbout" runat="server" Text="About Us" CssClass="btn_nav"/>
+                                    </li>
+
+                                    <li>
+                                        <asp:Button ID="btnServices" runat="server" Text="Services" CssClass="btn_nav"/>
+                                    </li>
+
+                                    <li>
+                                        <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn_nav" OnClick="btnLogin_Click"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="banner" style="background-image: url(Images/banner.jpg);">
+                <img src="Images/logo.png" class="banner_img_logo">
+                <div class="company">
+                    <span class="banner_heading">NEOHOUSE PROPERTY INVESTMENT</span>
+                    <br>
+                    <span class="banner_sub-head">Best Service Guaranteed</span>
+                </div>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <footer>
+                <div class="container-fluid">
+                    <div class="row justify-content-center mt-3">
+                        <div class="col-3 text-center pt-4">
+                            <ul class="media-icons">
+                                <li><a href="#">
+                                    <img src="images/facebook.png" alt=""></a></li>
+                                <li><a href="#">
+                                    <img src="images/instagram.png" alt=""></a></li>
+                                <li><a href="#">
+                                    <img src="images/twitter.png" alt=""></a></li>
+                                <li><a href="#">
+                                    <img src="images/youtube.png" alt=""></a></li>
+                                <li><a href="#">
+                                    <img src="images/linkedin.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom: 12px;">
+                        <div class="col copy">
+                            Copyright &copy; 2021, Property Management System. All Rights Reserved
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
