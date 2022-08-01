@@ -56,6 +56,7 @@ namespace PropertyManagementSystem
             return UserAccountId;
         }
 
+        //done
         public UserAccountsModel AuthenticateLogin(string pUserName, string pPassword)
         {
 
@@ -266,6 +267,7 @@ namespace PropertyManagementSystem
             return defaultPage;
         }
 
+        //done
         public void SignOut(int pUserAccountId)
         {
             //using (conn)

@@ -58,7 +58,7 @@
                                     </li>
 
                                     <li>
-                                        <asp:Button ID="btnSignout" runat="server" Text="Sign Out" CssClass="btn_nav" />
+                                        <asp:Button ID="btnSignout" runat="server" Text="Sign Out" CssClass="btn_nav" OnClick="btnSignout_Click" />
                                     </li>
                                 </ul>
                             </div>

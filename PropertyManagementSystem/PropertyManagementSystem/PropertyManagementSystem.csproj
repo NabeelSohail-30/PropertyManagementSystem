@@ -43,6 +43,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbConnection.cs" />
+    <Compile Include="ListTables\IListAgreementTypeRepo.cs" />
+    <Compile Include="ListTables\IListCountryRepo.cs" />
+    <Compile Include="ListTables\IListCurrencyRepo.cs" />
+    <Compile Include="ListTables\IListDocumentTypeRepo.cs" />
+    <Compile Include="ListTables\IListPaymentMethodTypeRepo.cs" />
+    <Compile Include="ListTables\IListPropertyTypeRepo.cs" />
+    <Compile Include="ListTables\ListAgreementTypeModel.cs" />
+    <Compile Include="ListTables\ListAgreementTypeRepo.cs" />
+    <Compile Include="ListTables\ListCountryModel.cs" />
+    <Compile Include="ListTables\ListCountryRepo.cs" />
+    <Compile Include="ListTables\ListCurrencyModel.cs" />
+    <Compile Include="ListTables\ListCurrencyRepo.cs" />
+    <Compile Include="ListTables\ListDocumentTypeModel.cs" />
+    <Compile Include="ListTables\ListDocumentTypeRepo.cs" />
+    <Compile Include="ListTables\ListPaymentMethodTypeModel.cs" />
+    <Compile Include="ListTables\ListPaymentMethodTypeRepo.cs" />
+    <Compile Include="ListTables\ListPropertyTypeModel.cs" />
+    <Compile Include="ListTables\ListPropertyTypeRepo.cs" />
     <Compile Include="Module_Login\IPagesRepo.cs" />
     <Compile Include="Module_Login\IRoleAuthorizationRepo.cs" />
     <Compile Include="Module_Login\IRolesRepo.cs" />
@@ -55,12 +73,14 @@
     <Compile Include="Module_Login\RolesAuthorizationRepo.cs" />
     <Compile Include="Module_Login\UserRolesModel.cs" />
     <Compile Include="Module_Login\UserRolesRepo.cs" />
+    <Compile Include="Module_PropertyDetails\PropertyDetailsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Module_Login\RolesModel.cs" />
     <Compile Include="Module_Login\RolesRepo.cs" />
     <Compile Include="Module_Login\UserAccountsModel.cs" />
     <Compile Include="Module_Login\UserAccountsRepo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

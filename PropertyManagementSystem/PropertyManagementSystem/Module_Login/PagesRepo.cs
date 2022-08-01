@@ -98,5 +98,20 @@ namespace PropertyManagementSystem
             }
             return page;
         }
+
+        public int Add(PagesModel page)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PagesModel Update(int Id, PagesModel page)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,5 +10,8 @@ namespace PropertyManagementSystem
     {
         List<PagesModel> Find();
         PagesModel Find(int pPageId);
+        int Add(PagesModel page);
+        PagesModel Update(int Id, PagesModel page);
+        int Delete(int Id);
     }
 }
